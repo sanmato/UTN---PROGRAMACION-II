@@ -14,5 +14,7 @@ void push(employeeStack *employeeStack, employee employee);
 employee pop(employeeStack *employeeStack);
 employee top(employeeStack *employeeStack);
 int isEmpty(employeeStack *employeeStack);
+void showStack(employeeStack *empStack);
+void readWithLimit(employeeStack *employees);
 
 #endif

@@ -32,3 +32,39 @@ employee top(employeeStack *employeeStack) {
 int isEmpty(employeeStack *employeeStack) {
     return (employeeStack->valid == 0) ? 1 : 0;
 }
+
+void showStack(employeeStack *empStack) {
+    //ALTERNATIVE
+    /*if(!isEmpty(myStack)) {
+        for(int i=myStack->valid; i > 0; i--) {
+            showEmployee(myStack->node[i-1]);
+        }*/
+
+    employeeStack temporalStack;
+    initializeEmployeeStack(&temporalStack);
+
+    while (!isEmpty(empStack)) {
+        showEmployee(top(empStack));
+        push(&temporalStack, pop(empStack));
+    }
+    
+    while (!isEmpty(&temporalStack)) {
+        push(empStack, pop(&temporalStack));
+    }
+}
+
+void readWithLimit(employeeStack *employees) {
+    int limit = 0;
+    employee auxEmployee;
+    printf("\nInsert Element numbers: ");
+    scanf("%d", &limit);
+
+    if(employees->valid < 50) {
+        while(employees->valid < limit) {
+            auxEmployee = loadEmployee();
+            push(employees, auxEmployee);
+        }      
+    } else {
+        printf("\nStack is full");
+    }
+}
