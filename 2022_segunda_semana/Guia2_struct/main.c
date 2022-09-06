@@ -38,7 +38,8 @@ int main()
     //copyArray(myPersonArray, newArray, elements, gender);
 
     elementsPointer = copyArray2(myPersonArray, elements, gender, &newArray);
-    showPersonArray(newArray, vp);
+    printf("\n%d", elementsPointer);
+    showPersonArray(newArray, elementsPointer);
 
     printf("\n");
     system("pause");
@@ -113,7 +114,6 @@ void copyArray(person *fromArray, person *toArray, int elements, char genderToCo
     toArray = (person *)malloc(sizeof(person)*totalGender);
 
     int i = 0, j = 0;
-
     while(i < elements) {
         if(fromArray[i].gender == genderToCopy) {
             toArray[j] = fromArray[i];
@@ -128,9 +128,12 @@ int copyArray2(person *fromArray, int elements, char gender, person **toArray) {
     int totalGender = genderCounter(fromArray, elements, gender);
     (*toArray) = (person*)malloc(sizeof(person)*totalGender);
     int i, j=0;
-    for(i = 0; i < totalGender; i++) {
+    printf("\nvalidos: %d", elements);
+    printf("\nTotalgender: %d", totalGender);
+    for(i = 0; i < elements; i++) {
         if(fromArray[i].gender == gender) {
-            *toArray[j] = fromArray[i];
+            (*toArray)[j] = fromArray[i];
+            //showPerson(fromArray[i]);
             j++;
         }
     }
