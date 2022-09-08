@@ -15,5 +15,8 @@ void showNode(node * );
 void showList(node * );
 node* searchNode(node *);
 node* insertAtLast(node *, node *);
+node* insertInOrder(node *, node *);
+int countElements(node *);
+node* intercalateList(node *, node *, node *);
 
 #endif //ILINKEDLIST_H

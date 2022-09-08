@@ -58,3 +58,63 @@ node* insertAtLast(node *list, node *newNode) {
     }
     return list;
 }
+
+node* insertInOrder(node *list, node *newNode) {
+    if(!list) {
+        list = newNode;
+    } else {
+        if(newNode->data.age < list->data.age) {
+            list = insertAtFront(list, newNode);
+        } else {
+            node *prevNode = list;
+            node *currentNode = list->nextNode;
+
+            while((currentNode != NULL) && newNode->data.age > currentNode->data.age) {
+                prevNode = currentNode;
+                currentNode = currentNode->nextNode;
+            }
+            prevNode->nextNode = newNode;
+            newNode->nextNode = currentNode;
+        }
+    }
+    return list;
+}
+
+int countElements(node *list) {
+    int counter = 0;
+    if(list) {
+        counter = countElements(list->nextNode);
+        counter++;
+    }
+    return counter;
+}
+
+node* intercalateList(node *firstList, node *secondList, node *newList) {
+
+    node *temp = NULL;
+
+    while(firstList && secondList) {
+        if(firstList->data.age < secondList->data.age) {
+            temp = firstList;
+            firstList = firstList->nextNode;
+        } else {
+            temp = secondList;
+            secondList = secondList->nextNode;
+        }
+        temp->nextNode = NULL;
+        newList = insertAtLast(newList, temp);
+    }
+    while(firstList) {
+        temp = firstList;
+        firstList = firstList->nextNode;
+        temp->nextNode = NULL;
+        newList = insertAtLast(newList, temp);
+    } while(secondList) {
+        temp = secondList;
+        secondList = secondList->nextNode;
+        temp->nextNode = NULL;
+        newList = insertAtLast(newList, temp);
+    }
+
+    return newList;
+}
