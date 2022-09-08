@@ -104,17 +104,16 @@ node* intercalateList(node *firstList, node *secondList, node *newList) {
         temp->nextNode = NULL;
         newList = insertAtLast(newList, temp);
     }
-    while(firstList) {
-        temp = firstList;
-        firstList = firstList->nextNode;
-        temp->nextNode = NULL;
-        newList = insertAtLast(newList, temp);
-    } while(secondList) {
-        temp = secondList;
-        secondList = secondList->nextNode;
+    while(firstList || secondList) {
+        if(firstList) {
+            temp = firstList;
+            firstList = firstList->nextNode;
+        } else if(secondList) {
+            temp = secondList;
+            secondList = secondList->nextNode;
+        }
         temp->nextNode = NULL;
         newList = insertAtLast(newList, temp);
     }
-
     return newList;
 }
