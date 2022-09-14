@@ -9,7 +9,7 @@ typedef struct node {
 node* initializeList();
 node* createNode(int );
 node* insertAtFront(node * , node * );
-node* pushFront(node *);
+node* pushFront(node *, int );
 void showList(node * );
 node* searchNode(node *);
 node* insertAtLast(node *, node *);
@@ -17,5 +17,6 @@ node* insertInOrder(node *, node *);
 int countElements(node *);
 node* intercalateList(node *, node *, node *);
 node* popFirst(node *);
+int peek(node *);
 
 #endif //ILINKEDLIST_H

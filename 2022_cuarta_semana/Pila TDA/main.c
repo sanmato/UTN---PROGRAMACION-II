@@ -6,20 +6,25 @@
 int main()
 {
     Stack stack;
+    int number, number2;
     initializeStack(&stack);
 
-    push(&stack);
-    push(&stack);
-    push(&stack);
+    push(&stack, 1);
+    push(&stack, 2);
+    push(&stack, 3);
 
     showStack(stack);
 
-    printf("\n");
+    number2 = pop(&stack);
+    system("pause");
+    printf("\npopped: %d", number2);
+
+    showStack(stack);
+
     system("pause");
 
-    pop(&stack);
-
-    showStack(stack);
+    number = peekStack(&stack);
+    printf("\npeek: %d", number);
 
     return 0;
 }

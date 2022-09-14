@@ -4,15 +4,19 @@
 #include"IStack.h"
 
 void initializeStack(Stack *stack) {
-    *stack = initializeList();
+    (*stack) = initializeList();
 }
 
-void push(Stack *stack) {
-    *stack = pushFront(*stack);
+void push(Stack *stack, int data) {
+    (*stack) = pushFront(*stack, data);
 }
 
-void pop(Stack *stack) {
-    *stack = popFirst(*stack);
+int pop(Stack *stack) {
+    int poppedStack = peek(*stack);
+    
+    (*stack) = popFirst(*stack);
+    
+    return poppedStack;
 }
 
 void showStack(Stack stack) {
@@ -31,4 +35,14 @@ void showStack(Stack stack) {
     else {
         printf("Stack is empty!\n");
     }
+}
+
+int peekStack(Stack *stack) {
+    int data;
+    data = peek(*stack);
+    return data;
+}
+
+int isEmpty(Stack stack) {
+    return stack ? 1 : 0;
 }

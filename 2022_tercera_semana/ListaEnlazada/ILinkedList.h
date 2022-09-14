@@ -18,5 +18,7 @@ node* insertAtLast(node *, node *);
 node* insertInOrder(node *, node *);
 int countElements(node *);
 node* intercalateList(node *, node *, node *);
+node* popFirst(node *);
+node* reverseList(node *);
 
 #endif //ILINKEDLIST_H

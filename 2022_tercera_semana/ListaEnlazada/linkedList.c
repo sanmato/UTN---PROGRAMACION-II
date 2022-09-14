@@ -117,3 +117,27 @@ node* intercalateList(node *firstList, node *secondList, node *newList) {
     }
     return newList;
 }
+
+node* popFirst(node* list) {
+    node* temp = list;
+    list = list->nextNode;
+    
+    free(temp);
+
+    return list;
+}
+
+node* reverseList(node* list) {
+    node* temp = NULL;
+
+    while(list) {
+        node* next = list->nextNode;
+        list->nextNode = temp;
+
+        temp = list;
+        list = next;
+    }
+    list = temp;
+
+    return list;
+}

@@ -26,12 +26,8 @@ node* insertAtFront(node *list, node *newNode) {
     return list;
 }
 
-node* pushFront(node* list) {
+node* pushFront(node* list, int data) {
     node* newListNode;
-    int data;
-
-    printf("\nInsert element: ");
-    scanf("%d", &data);
 
     newListNode = createNode(data);
 
@@ -142,9 +138,22 @@ node* intercalateList(node *firstList, node *secondList, node *newList) {
 }
 
 node* popFirst(node *list) {
-    node* temp = list;
-    list = list->nextNode;
-    free(temp);
+    if(!list) {
+        printf("\nEmpty...");
+    } else {
+        node* temp = list;
+        list = list->nextNode;
+        free(temp);
 
-    return list;
+        return list;
+    }
 }
+
+int peek(node *list) {
+    if(list) {
+        return list->data;
+    } else {
+        printf("\nEmpty...");
+    }
+}
+
