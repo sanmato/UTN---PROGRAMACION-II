@@ -19,22 +19,8 @@ int pop(Stack *stack) {
     return poppedStack;
 }
 
-void showStack(Stack stack) {
-    Stack currentNode;
-    currentNode = stack;
-    if(currentNode != NULL) {
-        printf("\nTop .............................................. Base\n\n");
-        do {
-            printf("| %d ", currentNode->data);
-            currentNode = currentNode->nextNode;
-        }
-        while(currentNode != NULL);
-        printf("\nTop .............................................. Base\n\n");
-        printf("\n");
-    }
-    else {
-        printf("Stack is empty!\n");
-    }
+void showStack(Stack *stack) {
+    showList(*stack);
 }
 
 int peekStack(Stack *stack) {

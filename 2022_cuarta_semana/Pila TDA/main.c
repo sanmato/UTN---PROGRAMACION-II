@@ -13,13 +13,13 @@ int main()
     push(&stack, 2);
     push(&stack, 3);
 
-    showStack(stack);
+    showStack(&stack);
 
     number2 = pop(&stack);
     system("pause");
     printf("\npopped: %d", number2);
 
-    showStack(stack);
+    showStack(&stack);
 
     system("pause");
 

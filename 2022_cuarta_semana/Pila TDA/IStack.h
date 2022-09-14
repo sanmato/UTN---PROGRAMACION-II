@@ -8,7 +8,7 @@
 void initializeStack(Stack *stack);
 void push(Stack *stack, int );
 int pop(Stack *stack);
-void showStack(Stack stack);
+void showStack(Stack *stack);
 int peekStack(Stack *stack);
 int isEmpty(Stack stack);
 
