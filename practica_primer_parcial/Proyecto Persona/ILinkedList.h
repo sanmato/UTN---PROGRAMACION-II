@@ -24,5 +24,8 @@ int countElements(node *);
 person peek(node* );
 int listToArray(node *, person [], int );
 node* arrayToList(person [], int );
+void listToFile(node *, char []);
+node* fileToList(char [], node *, int );
+void showFileData(char []);
 
 #endif //ILINKEDLIST_H

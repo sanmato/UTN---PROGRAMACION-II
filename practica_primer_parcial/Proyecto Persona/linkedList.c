@@ -82,7 +82,7 @@ node* intercalateList(node* firstList, node* secondList, node* newList) {
     node* temp = NULL;
 
     while(firstList && secondList) {
-        if(firstList->data.age < firstList->data.age) {
+        if(firstList->data.age < secondList->data.age) {
             temp = firstList;
             firstList = firstList->nextNode;
         } else {
@@ -197,4 +197,46 @@ node* arrayToList(person personArray[], int elements) {
         list = insertAtLast(list, temp);
     }
     return list;
+}
+
+void listToFile(node* list, char fileName[]) {
+    FILE* myFile = fopen(fileName, "wb");
+    person tempPerson;
+    if(myFile) {
+        while(list) {
+            tempPerson = list->data;
+            fwrite(&tempPerson, sizeof(person), 1, myFile);
+            list = list->nextNode;
+        }
+        fclose(myFile);
+    }
+}
+
+node* fileToList(char fileName[], node* list, int age) {
+    FILE* myFile = fopen(fileName, "rb");
+    person tempPerson;
+    node* temp;
+    if(myFile) {
+        while(fread(&tempPerson, sizeof(person), 1, myFile) > 0) {
+            if(tempPerson.age > age) {
+                temp = createNode(tempPerson);
+                list = insertInOrderByAge(list, temp);
+            }
+        }
+        fclose(myFile);
+    }
+    return list;
+}
+
+void showFileData(char fileName[]) {
+    FILE* myFile = fopen(fileName, "rb");
+
+    person tempPerson;
+
+    if(myFile) {
+        while(fread(&tempPerson, sizeof(person), 1, myFile) > 0) {
+            showPerson(tempPerson);
+        }
+        fclose(myFile);
+    }
 }

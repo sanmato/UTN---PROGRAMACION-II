@@ -5,6 +5,7 @@
 
 int main()
 {
+    char filename[15] = {"data.bin"};
     person newPerson = createPerson();
     person newPerson2 = createPerson();
     person newPerson3 = createPerson();
@@ -30,8 +31,14 @@ int main()
     int dimension = 3, elements2 = 0;
     person persons[dimension];
     elements2 = createPersonArray(persons, dimension);
-    emptyList = arrayToList(persons, elements2);
+    //emptyList = arrayToList(persons, elements2);
+    //showList(emptyList);
+    listToFile(listNode, filename);
+    showFileData(filename);
+
+    emptyList = fileToList(filename, emptyList, 19);
     showList(emptyList);
+
 
     return 0;
 }
