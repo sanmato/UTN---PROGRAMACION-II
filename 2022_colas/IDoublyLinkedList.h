@@ -9,13 +9,14 @@ typedef struct doubleNode {
 
 doubleNode* initializeDoubleList(void);
 doubleNode* createNode(int );
-void insertAtFront(doubleNode **, doubleNode *);
+doubleNode* insertAtFront(doubleNode *, doubleNode *);
 void showDoublyList(doubleNode *);
 void doublyListToFile(doubleNode *, char [], int );
 void showFileOfDoublyList(char []);
 int peek(doubleNode *);
-void pop(doubleNode **);
+doubleNode* pop(doubleNode *);
 doubleNode* searchLastNode(doubleNode* );
-void insertAtLast(doubleNode **, doubleNode *);
+doubleNode* insertAtLast(doubleNode *, doubleNode *);
+doubleNode* deleteNode(doubleNode *, int );
 
 #endif //IDOUBLYLINKEDLIST_H

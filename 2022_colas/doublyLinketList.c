@@ -16,12 +16,12 @@ doubleNode* createNode(int data) {
     return newNode;
 }
 
-void insertAtFront(doubleNode **doublyList, doubleNode* newNode) {
-    newNode->nextNode = (*doublyList);
-    if((*doublyList) != NULL) {
-        (*doublyList)->previousNode = newNode;
+doubleNode* insertAtFront(doubleNode* doublyList, doubleNode* newNode) {
+    newNode->nextNode = doublyList;
+    if(doublyList != NULL) {
+        doublyList->previousNode = newNode;
     }
-    (*doublyList) = newNode;
+    return doublyList;
 }
 
 void showDoublyList(doubleNode* doublyList) {
@@ -82,15 +82,16 @@ int peek(doubleNode* doublyList) {
     return info;
 }
 
-void pop(doubleNode** doublyList) {
-    doubleNode* temp = (*doublyList);
-    if((*doublyList)) {
-        (*doublyList) = (*doublyList)->nextNode;
-        if((*doublyList)) {
-            (*doublyList)->previousNode = NULL;
+doubleNode* pop(doubleNode* doublyList) {
+    doubleNode* temp = doublyList;
+    if(doublyList) {
+        doublyList = doublyList->nextNode;
+        if(doublyList) {
+            doublyList->previousNode = NULL;
         }
         free(temp);
     }
+    return doublyList;
 }
 
 doubleNode* searchLastNode(doubleNode* doublyList) {
@@ -102,12 +103,27 @@ doubleNode* searchLastNode(doubleNode* doublyList) {
     return doublyList;
 }
 
-void insertAtLast(doubleNode** doublyList, doubleNode* newNode) {
-    if(!(*doublyList)) {
-        *doublyList = newNode;
+doubleNode* insertAtLast(doubleNode* doublyList, doubleNode* newNode) {
+    if(!doublyList) {
+        doublyList = newNode;
     } else {
-        doubleNode* last = searchLastNode(*doublyList);
+        doubleNode* last = searchLastNode(doublyList);
         newNode->previousNode = last;
         last->nextNode = newNode;
     }
+    return doublyList;
+}
+
+doubleNode* deleteNode(doubleNode* doublyList, int toDelete) {
+    if(!doublyList) {
+        printf("\nEmpty...");
+    }
+
+    if(doublyList->data == toDelete) {
+        doublyList = pop(doublyList);
+    }
+
+    if()
+
+    return doublyList;
 }
