@@ -22,18 +22,22 @@ stNotaAlumno getNotaAlumno(registroArchivo );
 nodo* altaLDL(nodo* , stMateria , stNotaAlumno );
 void mostrarArregloLista(celda[] , int );
 void mostrarArchivo(char []);
+int altaADLConCondicion(celda adl[], int dimension, int id);
 
 int main()
 {
-    int validos = 0, dimension = 20;
+    int validos = 0, validos2 = 0, dimension = 20;
     celda arregloDeListas[dimension];
+    celda arregloDeListasCondicionado[dimension];
 
     char nombreDeArchivo[] = {"registroArchivo.dat"};
 
 
     validos = cargaADL(arregloDeListas, dimension, nombreDeArchivo);
 
-    mostrarArregloLista(arregloDeListas, validos);
+    validos2 = altaADLConCondicion(arregloDeListasCondicionado, dimension, 10);
+
+    mostrarArregloLista(arregloDeListasCondicionado, validos2);
     
     return 0;
 }
@@ -47,7 +51,8 @@ int cargaADL(celda adl[], int dim, char nombreArchivo[]) {
     if(archi) {
         while(validos<dim && fread(&registro,sizeof(registroArchivo),1,archi)>0) {
             materia = getMateria(registro);
-            validos = alta(adl, validos, materia, getNotaAlumno(registro));
+            nota = getNotaAlumno(registro);
+            validos = alta(adl, validos, materia, nota);
         }
         fclose(archi);
     }
@@ -123,7 +128,7 @@ void mostrarArregloLista(celda adl[], int validos) {
         muestraUnaCelda(adl[i]);
     }
 }
-
+/*
 void materiasConInicial2Archivo(char nombreArchivo[], celda arreglo[], int val, char inicial)
 {
     FILE* archi= fopen(nombreArchivo, "wb");
@@ -148,4 +153,24 @@ void materiasConInicial2Archivo(char nombreArchivo[], celda arreglo[], int val, 
             }
         }
     fclose(archi);
-   }
+   }*/
+
+int altaADLConCondicion(celda adl[], int dimension, int id) {
+    registroArchivo r;
+    stMateria materia;
+    stNotaAlumno nota;
+    int validos = 0;
+
+    FILE* archi = fopen("registroArchivo.dat", "rb");
+    if(archi) {
+        while((validos < dimension) && fread(&r, sizeof(registroArchivo), 1, archi) > 0) {
+            if(r.idMateria > id) {
+                materia = getMateria(r);
+                nota = getNotaAlumno(r);
+                validos = alta(adl, validos, materia, nota);
+            }
+        }
+        fclose(archi);
+    }
+    return validos;
+}
