@@ -1,0 +1,11 @@
+una gran tienda nos ha encomendado realizar un pequeño sistema para manejar los vendedores
+de distintos sectores de su tienda.
+
+la informacion se encuentra almacenada en el archivo subido en el campus.
+
+ej 1. funciones de alta
+ej 2. funciones de muestra
+ej 3. funciones de busqueda
+ej 4. buscar en un sector cuantos de sus vendedores superan ciertas ventas diarias
+ej 5. calcular el sector que tuvo mas ventas diarias
+ej 6. calcular que porcentaje representan las ventas diarias de un sector

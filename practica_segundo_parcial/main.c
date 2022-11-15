@@ -30,11 +30,10 @@ int main()
 
     char nombreDeArchivo[] = {"registroArchivo.dat"};
 
-    printf("\n validos: %d", validos);
 
     validos = cargaADL(arregloDeListas, dimension, nombreDeArchivo);
-    
-    printf("\n dato: %d", validos);
+
+    mostrarArregloLista(arregloDeListas, validos);
     
     return 0;
 }
@@ -46,7 +45,7 @@ int cargaADL(celda adl[], int dim, char nombreArchivo[]) {
     FILE* archi = fopen(nombreArchivo, "rb");
     int validos = 0;
     if(archi) {
-        while(validos<dim && fread(&registro, sizeof(registroArchivo), 1, archi) > 0) {
+        while(validos<dim && fread(&registro,sizeof(registroArchivo),1,archi)>0) {
             materia = getMateria(registro);
             validos = alta(adl, validos, materia, getNotaAlumno(registro));
         }
@@ -60,6 +59,7 @@ int alta(celda adl[], int validos, stMateria materia, stNotaAlumno nota) {
     if(posicion == -1) {
         validos = agregarCelda(adl, validos, materia);
         posicion = validos-1;
+        adl[posicion].listaDeNotas = inicLista();
     }
     adl[posicion].listaDeNotas = agregarAlFinal(adl[posicion].listaDeNotas, crearNodo(nota));
     return validos;
@@ -117,3 +117,35 @@ void mostrarArchivo(char nombreArchivo[]) {
         fclose(archi);
     }
 }
+
+void mostrarArregloLista(celda adl[], int validos) {
+    for(int i=0; i<validos; i++) {
+        muestraUnaCelda(adl[i]);
+    }
+}
+
+void materiasConInicial2Archivo(char nombreArchivo[], celda arreglo[], int val, char inicial)
+{
+    FILE* archi= fopen(nombreArchivo, "wb");
+    registroArchivo a;
+
+    if(archi)
+    {
+        for(int i=0; i<val; i++)
+        { if(arreglo[i].dato.materia[0] == inicial)  //<=== EL IF VA ANTES
+           {
+
+             seg= arreglo[i].listaDeNotas;  //<====================
+              while(seg)
+               {
+                    strcpy(a.materia, arreglo[i].dato.materia);
+                    a.idMateria = arreglo[i].dato.idMateria;
+                    strcpy(a.nombreApe, seg->nombreApe);
+                    a.legajo = seg->legajo;
+                    a.nota = seg->nota;
+                    fwrite(&a, sizeof(registroArchivo), 1, archi);
+                    seg=seg->siguiente;
+            }
+        }
+    fclose(archi);
+   }

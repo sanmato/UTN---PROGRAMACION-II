@@ -63,9 +63,13 @@ nodo* buscarUltimo(nodo* lista) {
 }
 
 nodo* agregarAlFinal(nodo* lista, nodo* aInsertar) {
-    nodo* ultimo = buscarUltimo(lista);
-    ultimo->siguiente = aInsertar;
-    return lista;
+    if(!lista) {
+        lista = aInsertar;
+    } else {
+        nodo* ultimo = buscarUltimo(lista);
+        ultimo->siguiente = aInsertar;
+    }
+
 }
 
 int cuentaNotasMayores(nodo* lista, int nota) {
