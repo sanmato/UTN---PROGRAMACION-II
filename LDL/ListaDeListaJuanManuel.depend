@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1667608496 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\listadelistajuanmanuel\main.c
+	<stdio.h>
+	<stdlib.h>
+	"listaDeLista.h"
+
+1667450311 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\listadelistajuanmanuel\listadelista.h
+	"lista.h"
+
+1667606385 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\listadelistajuanmanuel\lista.h
+	"nota.h"
+
+1667427741 f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\listadelistajuanmanuel\nota.h
+	<malloc.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1667607256 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\listadelistajuanmanuel\nota.c
+	"nota.h"
+
+1667605992 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\listadelistajuanmanuel\lista.c
+	"lista.h"
+
+1667607989 source:f:\onedrive - utn frmdp\progra 2 cuatri\lab 2\listadelistajuanmanuel\listadelista.c
+	"listaDeLista.h"
+

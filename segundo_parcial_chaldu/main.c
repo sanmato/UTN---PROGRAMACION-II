@@ -32,7 +32,7 @@ typedef struct celda {
 }celda;
 
 /*Ejercicio 1*/
-int pasarArchivoToADA(arreglo, dimension) {
+int pasarArchivoToADA(celda arreglo[], int dimension) {
     int validos = 0;
     FILE* buffer = fopen("archivoRegistrosVendedor.bin", "rb");
 
