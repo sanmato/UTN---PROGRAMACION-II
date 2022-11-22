@@ -4,6 +4,7 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "ilinkedlist.h": "c",
-        "notaalumno.h": "c"
+        "notaalumno.h": "c",
+        "persona.h": "c"
     }
 }
